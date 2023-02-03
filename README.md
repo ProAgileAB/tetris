@@ -1,5 +1,5 @@
 # tetris
-Tetris implementation written in Java. 
+Yea! Tetris implementation written in Java. 
 
 Used in Live Tech Coaching sessions
 
