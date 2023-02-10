@@ -1,4 +1,5 @@
 import org.approvaltests.Approvals;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -62,5 +63,20 @@ class GridApprovalTest {
         grid.put(new Location(0, 1), "B");
         grid.remove(new Location(0, 0));
         Approvals.verify(grid);
+    }
+
+    @Test
+    void locationOutsideGridIsInvalid() {
+        var grid = new MyBoundedGrid<>(1, 1);
+        Assertions.assertFalse(grid.isValid(new Location(-1, 0)));
+        Assertions.assertFalse(grid.isValid(new Location(1, 0)));
+        Assertions.assertFalse(grid.isValid(new Location(0, 1)));
+        Assertions.assertFalse(grid.isValid(new Location(0, -1)));
+    }
+
+    @Test
+    void locationWithinGridIsValid() {
+        var grid = new MyBoundedGrid<>(1, 1);
+        Assertions.assertTrue(grid.isValid(new Location(0, 0)));
     }
 }
