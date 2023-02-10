@@ -54,4 +54,13 @@ class GridApprovalTest {
         }
         Approvals.verify(grid);
     }
+
+    @Test
+    void removingOneOfTwoCells() {
+        var grid = new MyBoundedGrid<String>(1, 2);
+        grid.put(new Location(0, 0), "A");
+        grid.put(new Location(0, 1), "B");
+        grid.remove(new Location(0, 0));
+        Approvals.verify(grid);
+    }
 }
